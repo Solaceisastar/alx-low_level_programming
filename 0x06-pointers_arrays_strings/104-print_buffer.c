@@ -28,6 +28,16 @@ void print_buffer(char *b, int size)
 				else
 					printf("  ");
 			}
+			printf(" ");
+			for (l = j; l < j + 10; l++)
+			{
+				if (l >= size)
+					break;
+				if (*(b + l) < 32 || *(b + l) > 126)
+					printf("%c", '.');
+				else
+					printf("%c", *(b + l));
+			}
 			printf("\n");
 		}
 	}
