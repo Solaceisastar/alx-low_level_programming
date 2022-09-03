@@ -1,60 +1,21 @@
-#include <stdlib.h>
-
 #include "lists.h"
 
-
-
 /**
- * add_dnodeint_end - add a node to the end of a dlistint_t list
- * @head: a pointer to the starting node of a list
- * @n: the data for that new node
- * Return: the address of the new address, else NULL
+ * sum_dlistint - returns the sum of all the data (n)
+ * of a dlistint_t linked list
+ * @head: pointer to head node
+ * Return: sum of all the data or 0 if empty
  */
-
-dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
-
+int sum_dlistint(dlistint_t *head)
 {
+	size_t res = 0;
 
-	dlistint_t *new, *temp = *head;
-
-
-
-	new = malloc(sizeof(dlistint_t));
-
-	if (!new)
-
-		return (NULL);
-
-
-
-	new->n = n;
-
-	new->next = NULL;
-
-
-
-	if (!(*head))
-
+	if (!head)
+		return (0);
+	while (head != NULL)
 	{
-
-		*head = new;
-
-		return (new);
-
+		res += head->n;
+		head = head->next;
 	}
-
-
-
-	while (temp->next)
-
-		temp = temp->next;
-
-	temp->next = new;
-
-	new->prev = temp;
-
-
-
-	return (new);
-
+	return (res);
 }
